@@ -2,21 +2,19 @@
 </div>
 
 <script>
-    // hjelpevariabler for både view og controller
-    var contentDiv = document.getElementById('content');
-
     // model
     let numbers = [7, 3, 1, 5, 8];
     let chosenBar; // Variabel for hvilken stolpe som er valgt
     let inputValue; // Variabel for hva som er skrevet i input-feltet
+
     // view
-    show();
-    function show() {
+    updateView();
+    function updateView() {
         let svgInnerHtml = '';
         for (let i = 0; i < numbers.length; i++) {
             svgInnerHtml += createBar(numbers[i], i + 1);
         }
-        contentDiv.innerHTML = `
+        document.getElementById('content').innerHTML = /*HTML*/`
             <svg id="chart" width="500" viewBox="0 0 80 60">
                 ${svgInnerHtml}
             </svg><br/>
@@ -27,7 +25,7 @@
             <button>Legg til stolpe</button>
             <button disabled>Endre valgt stolpe</button><br />
             <button disabled>Fjerne valgt stolpe</button>
-            `;
+        `;
     }
 
     function createBar(number, barNo) {
